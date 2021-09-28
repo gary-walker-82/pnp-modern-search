@@ -995,11 +995,11 @@ export default class SearchResultsWebPart
     // Load Microsoft Graph Toolkit dynamically
     const { Providers, SharePointProvider } = await import(
       /* webpackChunkName: 'microsoft-graph-toolkit' */
-      "@microsoft/mgt/dist/es6"
+      "@microsoft/mgt-spfx"
     );
-
     if (!Providers.globalProvider) {
       Providers.globalProvider = new SharePointProvider(this.context);
+      console.log(Providers.globalProvider);
     }
   }
 

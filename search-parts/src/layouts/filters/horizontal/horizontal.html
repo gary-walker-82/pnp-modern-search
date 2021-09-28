@@ -44,20 +44,9 @@
 
 		{{#each @root.filters as |filter|}}
 			<div class="filter">
-				{{#eq filter.selectedTemplate 'ComboBoxFilterTemplate'}}
+				{{#eq filter.selectedTemplate 'TaxonomyPickerFilterTemplate'}}
 						<div class="filter--name">{{filter.displayName}}</div>
 						<div class="filter--value">
-							<pnp-filtercombobox 
-								data-instance-id="{{@root.instanceId}}" 
-								data-filter-name="{{filter.filterName}}" 
-								data-is-multi="{{filter.isMulti}}" 
-								data-show-count="{{filter.showCount}}"
-								data-theme-variant="{{JSONstringify @root.theme}}"
-							>
-									{{#each filter.values}}
-										<option value="{{value}}" data-selected="{{selected}}" data-disabled="{{disabled}}" data-count="{{count}}">{{name}}</option>
-									{{/each}}
-							</pnp-filtercombobox>
 						</div>
 				{{else}}
 					<pnp-collapsible data-group-name="{{filter.displayName}}" data-default-collapsed="{{#or hasSelectedValues expandByDefault selectedOnce}}false{{else}}true{{/or}}" data-theme-variant="{{JSONstringify @root.theme}}">
@@ -110,7 +99,6 @@
 
 						<template id="collapsible-footer">
 							{{#isnt filter.selectedTemplate 'DateRangeFilterTemplate'}}
-								{{#isnt filter.selectedTemplate 'TaxonomyPickerFilterTemplate'}}
 									{{#eq filter.values.length 0}}
 										<div class="filter--message">
 											{{@root.strings.FilterNoValuesMessage}}
